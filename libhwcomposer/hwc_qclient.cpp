@@ -371,6 +371,9 @@ static bool updateDisplayBWCapForCam(bool on) {
         return false;
     }
 
+    if(on) {
+        bw_flag = MDSS_MAX_BW_LIMIT_CAMERA;
+    }
     snprintf(bw, sizeof(bw), "%d", bw_flag);
     ssize_t bytes = pwrite(sysfsFd, bw, strlen(bw), 0);
     if(bytes < 0) {
